@@ -1,9 +1,11 @@
-name: cinder-powermax
-summary: PowerMax integration for OpenStack Block Storage
-maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
+name: cinder-dell-powermax
+summary: Dell PowerMax integration for OpenStack Block Storage
+maintainer: Dell OpenStack Charmers <openstack@dell.com>
 description: |
   Cinder is the block storage service for the Openstack project.
-  This charm provides a PowerMax backend for Cinder.
+  This charm provides a Dell PowerMax backend for Cinder.
+docs:  https://github.com/dell-esg/powermax-cinder-charm/blob/main/README.md
+source: https://github.com/dell-esg/powermax-cinder-charm
 tags:
   - openstack
   - storage

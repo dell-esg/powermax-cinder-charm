@@ -22,8 +22,6 @@ from ops_openstack.plugins.classes import CinderStoragePluginCharm
 
 logger = logging.getLogger(__name__)
 
-VOLUME_DRIVER = 'cinder.volume.drivers.dell_emc.powermax.fc.PowerMaxFCDriver'
-
 
 class CinderPowerMaxCharm(CinderStoragePluginCharm):
 
@@ -41,6 +39,12 @@ class CinderPowerMaxCharm(CinderStoragePluginCharm):
     def cinder_configuration(self, charm_config) -> 'list[tuple]':
         """Return the configuration to be set by the principal"""
         cget = charm_config.get
+        
+        protocol = cget('protocol')
+        if protocol == 'FC':
+            VOLUME_DRIVER = 'cinder.volume.drivers.dell_emc.powermax.fc.PowerMaxFCDriver'
+        else:
+            VOLUME_DRIVER = 'cinder.volume.drivers.dell_emc.powermax.fc.PowerMaxISCSIDriver'
 
         volume_backend_name = cget('volume-backend-name') or self.framework.model.app.name
 
@@ -50,14 +54,13 @@ class CinderPowerMaxCharm(CinderStoragePluginCharm):
             ('san_ip', cget('san-ip')),
             ('san_login', cget('san-login')),
             ('san_password', cget('san-password')),
-            ('powermax_array', cget('powermax_array')),
-            ('powermax_port_groups', self._csv_to_array(cget('powermax_port_groups'))),
-            ('powermax_service_level', cget('powermax_service_level')),
-            ('powermax_srp', cget('powermax_srp')),
+            ('powermax_array', cget('powermax-array')),
+            ('powermax_port_groups', self._csv_to_array(cget('powermax-port-groups'))),
+            ('powermax_service_level', cget('powermax-service-level')),
+            ('powermax_srp', cget('powermax-srp')),
             ('retries', cget('retries')),
-            ('u4p_failover_autofailback', cget('u4p_failover_autofailback')),
-            ('use_multipath_for_image_xfer', cget('use_multipath_for_image_xfer')),
-            ('vmax_workload', cget('vmax_workload'))
+            ('u4p_failover_autofailback', cget('u4p-failover-autofailback')),
+            ('use_multipath_for_image_xfer', cget('use-multipath-for-image-xfer')),
         ]
         options = [(x, y) for x, y in raw_options if y]
         return options

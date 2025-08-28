@@ -1,46 +1,49 @@
 options:
   volume-backend-name:
     type: string
+    default: powermax
+    description: Volume backend name for the backend. 
+  protocol:
+    type: string
+    default: FC
     description: |
-        Volume backend name for the backend. The default value is the
-        application name in the Juju model, e.g. "cinder-sf-mybackend"
-        if it's deployed as `juju deploy cinder-powermax cinder-sf-mybackend`.
-        A common backend name can be set to multiple backends with the
-        same characters so that those can be treated as a single virtual
-        backend associated with a single volume type.
+      Storage protocol to use with the array. Can be either FC or iSCSI.
   san-ip:
     type: string
     default: !!null ""
-    description: IP address of SAN controller
+    description: UniSphere IP used to access the array.
   san-login:
     type: string
-    default: sfadmin
-    description: Username for SAN controller
+    default: admin
+    description: Username used to log on UniSphere.
   san-password:
     type: string
-    default: sfpassword
-    description: Password for SAN controller
-  powermax_array:
+    default: password
+    description: Password used to authenticate in UniSphere.
+  powermax-array:
     type: string
-    description: Serial number of the array to connect to
-  powermax_port_groups:
+    description: Serial number of the array to connect to.
+  powermax-port-groups:
     type: string
-    description: List of port groups containing frontend ports configured prior for server connection
-  powermax_service_level:
+    description: |
+      List of port groups containing frontend ports configured prior for
+      server connection.
+  powermax-service-level:
     type: string
-    description: Service level to use for provisioning storage. Setting this as an extra spec in pool_name is preferable
-  powermax_srp:
+    description: |
+      Service level to use for provisioning storage. Setting this as 
+      an extra spec in pool_name is preferable.
+  powermax-srp:
     type: string
     description: Storage resource pool on array to use for provisioning
   retries:
-    type: int
-    description: Use this value to specify number of retries
-  u4p_failover_autofailback:
-    type: boolean
-    description: If the driver should automatically failback to the primary instance of Unisphere when a successful connection is re-established
-  use_multipath_for_image_xfer:
-    type: boolean
-    description: Use multipath for image xfer
-  vmax_workload:
     type: string
-    description: Password for SAN controller
+    description: Use this value to specify number of retries.
+  u4p-failover-autofailback:
+    type: boolean
+    description: |
+      If the driver should automatically failback to the primary instance
+      of Unisphere when a successful connection is re-established.
+  use-multipath-for-image-xfer:
+    type: boolean
+    description: Use multipath for image xfer.

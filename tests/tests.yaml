@@ -1,6 +1,7 @@
 charm_name: cinder-powermax
 tests:
-  - tests.tests.CinderPowerMaxTest
+  - tests.tests.CinderPowerMaxFCTest
+  - tests.tests.CinderPowerMaxISCSITest
 configure:
   - zaza.openstack.charm_tests.keystone.setup.add_demo_user
 gate_bundles:
