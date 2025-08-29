@@ -32,4 +32,4 @@ jobs:
       - name: Install dependencies
         run: python -m pip install tox
       - name: Run Unit Tests
-        run: tox -e build
+        run: tox -e unit
