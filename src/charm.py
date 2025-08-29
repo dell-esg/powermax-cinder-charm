@@ -44,7 +44,7 @@ class CinderPowerMaxCharm(CinderStoragePluginCharm):
         if protocol == 'FC':
             VOLUME_DRIVER = 'cinder.volume.drivers.dell_emc.powermax.fc.PowerMaxFCDriver'
         else:
-            VOLUME_DRIVER = 'cinder.volume.drivers.dell_emc.powermax.fc.PowerMaxISCSIDriver'
+            VOLUME_DRIVER = 'cinder.volume.drivers.dell_emc.powermax.iscsi.PowerMaxISCSIDriver'
 
         volume_backend_name = cget('volume-backend-name') or self.framework.model.app.name
 
