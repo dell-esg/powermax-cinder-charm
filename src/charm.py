@@ -39,14 +39,21 @@ class CinderPowerMaxCharm(CinderStoragePluginCharm):
     def cinder_configuration(self, charm_config) -> 'list[tuple]':
         """Return the configuration to be set by the principal"""
         cget = charm_config.get
-        
+
         protocol = cget('protocol')
         if protocol == 'FC':
-            VOLUME_DRIVER = 'cinder.volume.drivers.dell_emc.powermax.fc.PowerMaxFCDriver'
+            VOLUME_DRIVER = (
+                'cinder.volume.drivers.dell_emc.powermax.fc.PowerMaxFCDriver'
+            )
         else:
-            VOLUME_DRIVER = 'cinder.volume.drivers.dell_emc.powermax.iscsi.PowerMaxISCSIDriver'
+            VOLUME_DRIVER = (
+                'cinder.volume.drivers.dell_emc.powermax.iscsi.'
+                'PowerMaxISCSIDriver'
+            )
 
-        volume_backend_name = cget('volume-backend-name') or self.framework.model.app.name
+        volume_backend_name = (
+            cget('volume-backend-name') or self.framework.model.app.name
+        )
 
         raw_options = [
             ('volume_driver', VOLUME_DRIVER),
@@ -55,12 +62,14 @@ class CinderPowerMaxCharm(CinderStoragePluginCharm):
             ('san_login', cget('san-login')),
             ('san_password', cget('san-password')),
             ('powermax_array', cget('powermax-array')),
-            ('powermax_port_groups', self._csv_to_array(cget('powermax-port-groups'))),
+            ('powermax_port_groups',
+                self._csv_to_array(cget('powermax-port-groups'))),
             ('powermax_service_level', cget('powermax-service-level')),
             ('powermax_srp', cget('powermax-srp')),
             ('retries', cget('retries')),
             ('u4p_failover_autofailback', cget('u4p-failover-autofailback')),
-            ('use_multipath_for_image_xfer', cget('use-multipath-for-image-xfer')),
+            ('use_multipath_for_image_xfer',
+                cget('use-multipath-for-image-xfer')),
         ]
         options = [(x, y) for x, y in raw_options if y]
         return options
@@ -77,6 +86,7 @@ class CinderPowerMaxCharm(CinderStoragePluginCharm):
 
         items = [item.strip(" \"'") for item in csv.split(",")]
         return "[{}]".format(",".join(items))
+
 
 if __name__ == '__main__':
     main(CinderPowerMaxCharm)
