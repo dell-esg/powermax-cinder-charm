@@ -22,7 +22,7 @@ class CinderPowerMaxISCSITest(CinderBackendTest):
 
     expected_config_content = {
         'cinder-powermax': {
-            'volume_driver': ['cinder.volume.drivers.dell_emc.powermax.fc.PowerMaxISCSIDriver'],
+            'volume_driver': ['cinder.volume.drivers.dell_emc.powermax.iscsi.PowerMaxISCSIDriver'],
             'san_ip': environ['TEST_POWERMAX_SAN_IP'],
             'san_login': environ['TEST_POWERMAX_SAN_USERNAME'],
             'san_password': environ['TEST_POWERMAX_SAN_PASSWORD']
