@@ -30,7 +30,7 @@ class TestCinderPowerMaxCharm(unittest.TestCase):
 
     def test_base(self):
         self.assertEqual(
-            self.harness.framework.model.app.name, 'cinder-dell-powermax'
+            self.harness.framework.model.app.name, 'cinder-powermax'
         )
         self.harness.update_config({})
         self.assertTrue(

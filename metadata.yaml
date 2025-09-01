@@ -1,4 +1,4 @@
-name: cinder-dell-powermax
+name: cinder-powermax
 summary: Dell PowerMax integration for OpenStack Block Storage
 maintainer: Dell OpenStack Charmers <openstack@dell.com>
 description: |
