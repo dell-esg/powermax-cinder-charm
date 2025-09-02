@@ -1,0 +1,36 @@
+name: Charm Analysis
+
+on:
+  workflow_dispatch:
+
+jobs:
+  integration:
+    name: Integration Test (build and deploy)
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+#    - name: Set up Charmcraft and pack the charm
+#      uses: canonical/craft-actions/charmcraft/pack@main
+#      with: 
+#        channel: "3.x/stable"
+#        verbosity: brief
+        
+    - name: Install concierge
+      run: sudo snap install --classic concierge
+
+    - name: Install juju and bootstrap
+      run: |
+        sudo concierge -v prepare \
+            --juju-channel=3/stable \
+            --charmcraft-channel=3.x/stable \
+            --preset microk8s
+    
+    - name: Install dependencies
+      run: python -m pip install tox
+
+    - name: Run integration tests
+      run: tox -vve integration 
+      
