@@ -18,11 +18,11 @@ jobs:
         channel: "3.x/stable"
         
     - name: Install concierge
-      run: sudo snap install --classic concierge conciergek8s
+      run: sudo snap install --classic concierge
 
     - name: Install juju and bootstrap
       run: |
-        sudo concierge prepare \
+        sudo concierge -v prepare \
             --juju-channel=3/stable \
             --charmcraft-channel=3.x/stable \
             --preset microk8s
