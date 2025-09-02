@@ -29,8 +29,8 @@ def test_deploy_powermax(juju: jubilant.Juju) -> None:
     
 def test_relate(juju: jubilant.Juju) -> None:
     """Set the required relation."""
-    for relation in ['storage_backend']:
-        juju.integrate(f"{APP_NAME}:{relation}", CINDER_CHARM)
+    for relation in ['storage-backend']:
+        juju.integrate(f"{APP_NAME}:{relation}", f"{CINDER_CHARM}:{relation}")
 
     juju.wait(lambda status: jubilant.all_active(status, APP_NAME))
     logger.info("PowerMax cinder backend ready for operations")
