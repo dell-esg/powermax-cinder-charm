@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import logging
-import pathlib
+from pathlib import Path
 
 import jubilant
 
