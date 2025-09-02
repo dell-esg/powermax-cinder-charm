@@ -27,6 +27,9 @@ jobs:
             --juju-channel=3/stable \
             --charmcraft-channel=3.x/stable \
             --preset microk8s
+    
+    - name: Install dependencies
+      run: python -m pip install tox
 
     - name: Run integration tests
       run: tox -vv --log-level -e integration 
