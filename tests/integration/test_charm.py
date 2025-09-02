@@ -6,11 +6,10 @@ from pathlib import Path
 import jubilant
 from pytest_jubilant import pack
 
-from literals import CINDER_CHARM
-
 logger = logging.getLogger(__name__)
 
 APP_NAME = "cinder-powermax"
+CINDER_CHARM = "cinder"
 
 
 def test_deploy_powermax(juju: jubilant.Juju) -> None:
