@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 APP_NAME = "cinder-powermax"
 
 
-def test_deploy_powermax(juju: jubilant.juju) -> None:
+def test_deploy_powermax(juju: jubilant.Juju) -> None:
     """Deploy PowerMax Charm."""
     charm_root = Path(__file__).resolve().parents[2]
 
