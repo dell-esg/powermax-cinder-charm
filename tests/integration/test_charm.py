@@ -6,6 +6,8 @@ from pathlib import Path
 import jubilant
 from pytest_jubilant import pack
 
+from literals import CINDER_CHARM
+
 logger = logging.getLogger(__name__)
 
 APP_NAME = "cinder-powermax"
@@ -25,3 +27,12 @@ def test_deploy_powermax(juju: jubilant.Juju) -> None:
          "powermax-srp": "SRP_1",
      }
     juju.deploy(pack(charm_root).resolve(), app=APP_NAME, config=config)
+    
+def test_relate(juju: jubilant.Juju) -> None:
+    """Set the required relation."""
+    for relation in [storage_backend]:
+        juju.integrate(f"{APP_NAME}:{relation}", CINDER_CHARM)
+
+    juju.wait(lambda status: jubilant.all_active(status, APP_NAME))
+    logger.info("PowerMax cinder backend ready for operations")
+    
