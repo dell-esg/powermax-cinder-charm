@@ -12,15 +12,15 @@ APP_NAME = "cinder-powermax"
 
 def test_deploy_powermax(juju: jubilant.juju) -> None:
     """Deploy PowerMax Charm."""
-   charm_root = Path(__file__).resolve().parents[2]
+    charm_root = Path(__file__).resolve().parents[2]
 
-   config = {
-        "protocol": "ISCSI",
-        "san-login": "admin",
-        "san-password": "password",
-        "san-ip": "10.20.30.40",
-        "powermax-array": "012345678901"
-        "powermax-port-groups": "[OS-ISCSI-PG]"
-        "powermax-srp": "SRP_1",
-    }
-   juju.deploy(pack(charm_root).resolve(), app=APP_NAME, config=config)
+    config = {
+         "protocol": "ISCSI",
+         "san-login": "admin",
+         "san-password": "password",
+         "san-ip": "10.20.30.40",
+         "powermax-array": "012345678901"
+         "powermax-port-groups": "[OS-ISCSI-PG]"
+         "powermax-srp": "SRP_1",
+     }
+    juju.deploy(pack(charm_root).resolve(), app=APP_NAME, config=config)
