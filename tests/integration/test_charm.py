@@ -20,7 +20,7 @@ def test_deploy_powermax(juju: jubilant.juju) -> None:
          "san-password": "password",
          "san-ip": "10.20.30.40",
          "powermax-array": "012345678901",
-         "powermax-port-groups": "[OS-ISCSI-PG]"
+         "powermax-port-groups": "[OS-ISCSI-PG]",
          "powermax-srp": "SRP_1",
      }
     juju.deploy(pack(charm_root).resolve(), app=APP_NAME, config=config)
