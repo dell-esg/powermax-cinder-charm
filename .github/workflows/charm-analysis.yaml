@@ -27,3 +27,7 @@ jobs:
             --juju-channel=3/stable \
             --charmcraft-channel=3.x/stable \
             --preset microk8s
+
+    - name: Run integration tests
+      run: tox -vv --log-level -e integration 
+      
