@@ -32,5 +32,5 @@ jobs:
       run: python -m pip install tox
 
     - name: Run integration tests
-      run: tox -vv --log-level -e integration 
+      run: tox -vve integration 
       
