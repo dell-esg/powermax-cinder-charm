@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout source code:
+    - name: Checkout source code
       uses: actions/checkout@v4
 
     - name: Set up Charmcraft and pack the charm
