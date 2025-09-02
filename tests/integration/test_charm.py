@@ -25,6 +25,7 @@ def test_deploy_powermax(juju: jubilant.Juju) -> None:
          "powermax-port-groups": "[OS-ISCSI-PG]",
          "powermax-srp": "SRP_1",
      }
+    juju.deploy(CINDER_CHARM)
     juju.deploy(pack(charm_root).resolve(), app=APP_NAME, config=config)
     
 def test_relate(juju: jubilant.Juju) -> None:
