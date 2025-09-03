@@ -6,9 +6,7 @@ on:
 jobs:
   integration:
     name: Integration Test (build and deploy)
-    runs-on: 
-      group: charm-dev
-
+    
     steps:
     - name: Checkout source code
       uses: actions/checkout@v4
