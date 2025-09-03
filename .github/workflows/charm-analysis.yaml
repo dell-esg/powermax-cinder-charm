@@ -1,5 +1,7 @@
 name: Charm Analysis
 
+runs-on: self-hosted
+
 on:
   workflow_dispatch:
 
