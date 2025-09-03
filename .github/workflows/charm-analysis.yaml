@@ -6,6 +6,7 @@ on:
 jobs:
   integration:
     name: Integration Test (build and deploy)
+    runs-on: Ubuntu-22.04
     
     steps:
     - name: Checkout source code
