@@ -25,7 +25,7 @@ jobs:
       run: |
         sudo concierge -v prepare \
             --juju-channel=3/stable \
-            --charmcraft-channel=3.x/stable \
+            --charmcraft-channel=3.5/stable \
             --preset machine
     
     - name: Install dependencies
