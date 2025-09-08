@@ -5,7 +5,7 @@ from os import environ
 class CinderPowerMaxFCTest(CinderBackendTest):
     """Encapsulate cinder-powermax tests."""
 
-    backend_name = 'cinder-powermax'
+    backend_name = 'cinder-powermax-fc'
 
     expected_config_content = {
         'cinder-powermax': {
@@ -18,7 +18,7 @@ class CinderPowerMaxFCTest(CinderBackendTest):
 class CinderPowerMaxISCSITest(CinderBackendTest):
     """Encapsulate cinder-powermax tests."""
 
-    backend_name = 'cinder-powermax'
+    backend_name = 'cinder-powermax-iscsi'
 
     expected_config_content = {
         'cinder-powermax': {
