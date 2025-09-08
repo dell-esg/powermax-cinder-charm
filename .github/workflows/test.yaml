@@ -21,6 +21,10 @@ jobs:
           echo "ip=$TAILSCALE_IP" >> $GITHUB_OUTPUT
           echo "🌐 Runner accessible at: $TAILSCALE_IP"
 
+      - name: Advertise
+        run: |
+          tailscale up --advertise-connector --advertise-tags=tag:ci
+
       - name: Setup SSH Debug (Tailscale Direct)
         uses: lexbritvin/ssh-session-action@v1
         with:
