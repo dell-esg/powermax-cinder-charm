@@ -26,16 +26,6 @@ jobs:
         echo "ip=$TAILSCALE_IP" >> $GITHUB_OUTPUT
         echo "🌐 Runner accessible at: $TAILSCALE_IP"
 
-    - name: Setup SSH Debug (Tailscale Direct)
-      uses: lexbritvin/ssh-session-action@v1
-      with:
-        # No jump host needed - direct connection via Tailscale
-        ssh-server-host: ${{ steps.tailscale-ip.outputs.ip }}
-        ssh-server-port: 2223
-        use-actor-ssh-keys: true
-        wait-timeout: 3600
-  
-
 #    - name: Set up Charmcraft and pack the charm
 #      uses: canonical/craft-actions/charmcraft/pack@main
 #      with: 
