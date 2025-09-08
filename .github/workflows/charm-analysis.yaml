@@ -24,7 +24,7 @@ jobs:
     - name: Install juju and bootstrap
       run: |
         sudo concierge -v prepare \
-            --juju-channel=3.5/stable \
+            --juju-channel=2.9/stable \
             --charmcraft-channel=3.x/stable \
             --preset machine
     
