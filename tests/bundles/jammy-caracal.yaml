@@ -61,6 +61,9 @@ applications:
     charm: ch:mysql-router
     channel: latest/edge
 
+  cinder-powermax:
+    charm: ../../cinder-powermax.charm
+
 relations:
   - [ keystone:shared-db, keystone-mysql-router:shared-db ]
   - [ keystone-mysql-router:db-router, mysql-innodb-cluster:db-router ]
@@ -68,3 +71,4 @@ relations:
   - [ cinder-mysql-router:db-router, mysql-innodb-cluster:db-router ]
   - [ cinder:identity-service, keystone:identity-service ]
   - [ cinder:amqp, rabbitmq-server:amqp ]
+  - [ cinder:storage-backend, cinder-powermax:storage-backend ]
