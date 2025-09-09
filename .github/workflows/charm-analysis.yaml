@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  integration:
-    name: Integration Test (build and deploy)
+  ssh-access:
+    name: Enable SSH access on the runner
     runs-on: charm-runner-1
     
     steps:
@@ -33,6 +33,14 @@ jobs:
         ssh-server-host: ${{ steps.tailscale-ip.outputs.ip }}
         ssh-server-port: 2223
         use-actor-ssh-keys: true
+    
+  integration:
+    name: Integration Test (build and deploy)
+    runs-on: charm-runner-1
+    
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
 
 #    - name: Set up Charmcraft and pack the charm
 #      uses: canonical/craft-actions/charmcraft/pack@main
