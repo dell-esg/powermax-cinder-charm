@@ -24,6 +24,7 @@ jobs:
     
   integration:
     name: Runs functional tests
+    needs: [pack]
     runs-on: charm-runner-1
     
     steps:
