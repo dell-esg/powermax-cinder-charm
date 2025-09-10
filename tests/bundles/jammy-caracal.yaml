@@ -8,7 +8,7 @@ machines:
   '0':
 
 applications:
-    cinder:
+  cinder:
     charm: ch:cinder
     num_units: 1
     options:
