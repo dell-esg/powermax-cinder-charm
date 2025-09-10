@@ -4,17 +4,18 @@ on:
   workflow_dispatch:
 
 jobs:
+  pack:
+    name: Build and pack the charm
+    uses: ./.github/workflows/build-and-test.yaml
+    
   integration:
-    name: Integration Test (build and deploy)
+    name: Runs functional tests
     runs-on: charm-runner-1
     
     steps:
     - name: Checkout source code
       uses: actions/checkout@v4
 
-    - name: Set up Charmcraft and pack the charm
-      uses: ./.github/workflows/build-and-test.yaml
-              
     - name: Install concierge
       run: sudo snap install --classic concierge
 
