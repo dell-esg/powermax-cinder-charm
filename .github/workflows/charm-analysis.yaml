@@ -4,32 +4,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  pack:
-    name: Build and pack the charm
-    runs-on: charm-runner-1
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - name: Setup LXD
-        uses: canonical/setup-lxd@v0.1.2
-        with:
-          channel: latest/stable
-      - name: Build charm
-        id: builder
-        run: |
-          sudo snap install charmcraft --classic
-          charmcraft pack -v
+  build:
+    name: Build the charm
+    uses: canonical/data-platform-workflows/.github/workflows/build_charms_with_cache.yaml@v2
+    permissions:
+      actions: write
     
   integration:
-    name: Runs functional tests
-    needs: [pack]
+    name: Runs integration tests
+    needs: [build]
     runs-on: charm-runner-1
     
     steps:
     - name: Checkout source code
       uses: actions/checkout@v4
+
+    - name: Download packed charm
+      uses: actions/dowload-artifact@v3
+      with: ${{ needs.build.outputs.artifact-name }}
 
     - name: Install concierge
       run: sudo snap install --classic concierge
@@ -46,4 +38,6 @@ jobs:
 
     - name: Run integration tests
       run: tox -vve func
+      env: 
+        PACKED_CHARM: ${{ needs.build.outputs.charms }}
       
