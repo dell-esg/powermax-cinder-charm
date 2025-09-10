@@ -12,11 +12,11 @@ jobs:
     - name: Checkout source code
       uses: actions/checkout@v4
 
-#    - name: Set up Charmcraft and pack the charm
-#      uses: canonical/craft-actions/charmcraft/pack@main
-#      with: 
-#        channel: "3.x/stable"
-#        verbosity: brief
+    - name: Set up Charmcraft and pack the charm
+      uses: canonical/craft-actions/charmcraft/pack@main
+      with: 
+        channel: "3.x/stable"
+        verbosity: brief
         
     - name: Install concierge
       run: sudo snap install --classic concierge
