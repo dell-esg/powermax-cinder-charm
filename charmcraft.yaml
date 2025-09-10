@@ -21,4 +21,3 @@ parts:
 
 platforms:
   ubuntu@22.04:amd64:
-  ubuntu@24.04:amd64:
