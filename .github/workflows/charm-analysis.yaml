@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: Build the charm
-    uses: canonical/data-platform-workflows/.github/workflows/build_charms_with_cache.yaml@v2
+    uses: canonical/data-platform-workflows/.github/workflows/build_charm.yaml@v1.0.0
     permissions:
       actions: write
     
