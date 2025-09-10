@@ -13,11 +13,8 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up Charmcraft and pack the charm
-      uses: canonical/craft-actions/charmcraft/pack@main
-      with: 
-        channel: "3.x/stable"
-        verbosity: brief
-        
+      uses: ./.github/workflows/build-and-test.yaml
+              
     - name: Install concierge
       run: sudo snap install --classic concierge
 
