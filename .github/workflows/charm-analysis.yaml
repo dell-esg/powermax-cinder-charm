@@ -6,7 +6,21 @@ on:
 jobs:
   pack:
     name: Build and pack the charm
-    uses: ./.github/workflows/build-and-test.yaml
+    runs-on: charm-runner-1
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Setup LXD
+        uses: canonical/setup-lxd@v0.1.2
+        with:
+          channel: latest/stable
+      - name: Build charm
+        id: builder
+        run: |
+          sudo snap install charmcraft --classic
+          charmcraft pack -v
     
   integration:
     name: Runs functional tests
