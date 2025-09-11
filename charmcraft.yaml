@@ -2,7 +2,7 @@ type: charm
 
 links:
   contact: Dell OpenStack charmers <openstack@dell.com>
-  docmentation: https://github.com/dell-esg/powermax-cinder-charm/blob/main/README.md
+  documentation: https://github.com/dell-esg/powermax-cinder-charm/blob/main/README.md
   source:
   - https://github.com/dell-esg/powermax-cinder-charm
 
