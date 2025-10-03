@@ -23,7 +23,8 @@ jobs:
 
     - name: Download packed charm
       uses: actions/download-artifact@v4
-      with: ${{ needs.build.outputs.artifact-name }}
+      with: 
+        name: build-output
 
     - name: Install concierge
       run: sudo snap install --classic concierge
