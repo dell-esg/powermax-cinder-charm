@@ -47,3 +47,8 @@ options:
   use-multipath-for-image-xfer:
     type: boolean
     description: Use multipath for image xfer.
+  replication-device:
+    type: string
+    description: |
+      defines the target replication array and its associated parameters
+      under a form of a list of key values pairs.
