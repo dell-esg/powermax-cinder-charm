@@ -70,6 +70,7 @@ class CinderPowerMaxCharm(CinderStoragePluginCharm):
             ('u4p_failover_autofailback', cget('u4p-failover-autofailback')),
             ('use_multipath_for_image_xfer',
                 cget('use-multipath-for-image-xfer')),
+            ('replication_device', cget('replication-device')),
         ]
         options = [(x, y) for x, y in raw_options if y]
         return options
